@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:videotest/modules/html_flutter_inappwebview/inapp_web_view.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class WebViewHtmlPage extends StatefulWidget {
@@ -10,22 +11,22 @@ class _WebViewHtmlPageState extends State<WebViewHtmlPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('网页视频播放'),
-        ),
-        body: WebView(
-          initialUrl: 'https://v.youku.com/v_show/id_XNDcxNTQ3MDUwOA==.html',
+      appBar: AppBar(
+        title: Text('网页视频播放'),
+      ),
+      body:
+        WebView(
+          initialUrl: 'http://www.iqiyi.com/v_19ry0opves.html',
           javascriptMode: JavascriptMode.unrestricted,
         )
-//      Center(
+//          Center(
 //        child: FlatButton(
 //          onPressed: () {
 //            Navigator.push(
 //              context,
 //              MaterialPageRoute(builder: (_) {
 //                return WebViewPage(
-//                  url:
-//                      "https://v.youku.com/v_show/id_XNDcxNTQ3MDUwOA==.html",
+//                  url: "https://www.iqiyi.com/v_19rws0ura0.html",
 //                  title: "aaa",
 //                );
 //              }),
@@ -35,6 +36,6 @@ class _WebViewHtmlPageState extends State<WebViewHtmlPage> {
 //          color: Colors.black38,
 //        ),
 //      ),
-        );
+    );
   }
 }

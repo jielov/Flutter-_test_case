@@ -46,7 +46,7 @@ class BaseAppBar {
             style: _appBarCommStyle(),
           ),
           centerTitle: true,
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.blue,
           elevation: this.elevation,
           actions: this.actions,
         ),

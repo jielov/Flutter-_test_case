@@ -4,19 +4,19 @@ import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:videotest/res/app_color.dart';
 import 'package:videotest/view/base_app_bar.dart';
 
-class WebViewPage extends StatefulWidget {
+class InappWebViewPage extends StatefulWidget {
   final String url, title;
 
-  const WebViewPage({Key key, @required this.url, @required this.title})
+  const InappWebViewPage({Key key, @required this.url, @required this.title})
       : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return _WebViewPageState();
+    return _InappWebViewPageState();
   }
 }
 
-class _WebViewPageState extends State<WebViewPage> {
+class _InappWebViewPageState extends State<InappWebViewPage> {
   bool _showLoading = true;
 
   InAppWebViewController _controller;

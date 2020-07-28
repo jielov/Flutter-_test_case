@@ -31,15 +31,13 @@ dependencies:
 
   # https://pub.dev/packages/flutter_html#-installing-tab-
   #  flutter_html: ^1.0.0
-  # https://pub.flutter-io.cn/packages/flutter_inappwebview
-  #  flutter_inappwebview: ^3.4.0+2  # 打开网页
   # https://pub.dev/packages/webview_flutter
-  webview_flutter: ^0.3.21   # 打开网页
+  webview_flutter: ^0.3.22+1   # 打开网页
   # https://pub.dev/packages/common_utils
   common_utils: ^1.1.3   #工具
   flutter_screenutil: ^1.1.0  #屏幕适配 框架
   # https://pub.dev/packages/logger#-installing-tab-
-#  logger: ^0.9.1
+  #  logger: ^0.9.1
   #https://pub.flutter-io.cn/packages/flutter_downloade
   flutter_downloader: ^1.4.4 #下载器
   #https://pub.flutter-io.cn/packages/video_player
@@ -58,6 +56,13 @@ dependencies:
   #https://pub.flutter-io.cn/packages/flutter_keyboard_visibility
   flutter_keyboard_visibility: ^3.2.1 #监听键盘
   toast: ^0.1.4  #吐司
+  #https://pub.flutter-io.cn/packages/path_provider_ex/install
+  path_provider_ex: ^1.0.1  #获取设备信息
+
+  shared_preferences: "^0.4.2" #数据存储
+  #https://pub.flutter-io.cn/packages/flutter_page_tracker/install
+  flutter_page_tracker: ^3.0.2  #应用页面事件埋点插件
+
 
 dev_dependencies:
   flutter_test:
