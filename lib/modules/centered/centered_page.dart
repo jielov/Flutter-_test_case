@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 // 一个颜色的三方插件
 //import 'package:flutter_color_plugin/flutter_color_plugin.dart';
@@ -69,6 +70,7 @@ class _HousePersonState extends State<HousePerson> {
     return Container(
       color: Colors.white,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Row(
             children: <Widget>[

@@ -3,7 +3,7 @@ import 'package:videotest/utils/adapter.dart';
 
 import 'home/page/home_page.dart';
 
-void main() {
+void main()async {
   runApp(MyApp());
 }
 

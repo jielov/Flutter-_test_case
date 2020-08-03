@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:videotest/modules/acquire/acquire_page.dart';
 import 'package:videotest/modules/centered/centered_page.dart';
 import 'package:videotest/modules/ceshi/flutter_keyboard_visibility.dart';
+import 'package:videotest/modules/ceshi/tab.dart';
 import 'package:videotest/modules/data_store/data_store_page.dart';
 import 'package:videotest/modules/download/page/download_page.dart';
-import 'package:videotest/modules/flutter_page_tracker/buried_point_events.dart';
 import 'package:videotest/modules/html_flutter_inappwebview/inapp_web_view.dart';
 import 'package:videotest/modules/input_box/input_box.dart';
 import 'package:videotest/modules/keyboard/page/keyboard_avoider_page.dart';
@@ -14,11 +14,15 @@ import 'package:videotest/modules/list/list_sliding_to_monitor.dart';
 import 'package:videotest/modules/photo/photo_page.dart';
 import 'package:videotest/modules/pop_up/pop_up_windows.dart';
 import 'package:videotest/modules/pull_down/pull_down_page.dart';
+import 'package:videotest/modules/roll/filtrate_page.dart';
+import 'package:videotest/modules/roll/roll_page.dart';
+import 'package:videotest/modules/roll/roll_test.dart';
+import 'package:videotest/modules/sqflite/packaging_spflite.dart';
+import 'package:videotest/modules/sqflite/spflite_page.dart';
 import 'package:videotest/modules/text/page/cross_dissolve_page.dart';
 import 'package:videotest/modules/webview/page/ceshi_web.dart';
 import 'package:videotest/modules/webview/page/html_page.dart';
 import 'package:videotest/modules/webview/page/webview_html.dart';
-import 'package:videotest/modules/webview/view/web_view_pag22e.dart';
 import 'package:videotest/utils/adapter.dart';
 
 class HomePage extends StatefulWidget {
@@ -66,12 +70,6 @@ class _HomePageState extends State<HomePage> {
 Map<String, WidgetBuilder> routers = {
   "跳转网页视频播放": (context) {
     return HtmlPage();
-  },
-  "爱奇艺视频播放": (context) {
-    return WebViewPage(
-      url: 'https://www.iqiyi.com/v_19ry0opves.html',
-      title: '爱奇艺',
-    );
   },
   "下载": (context) {
     return DownFilePage();
@@ -130,7 +128,22 @@ Map<String, WidgetBuilder> routers = {
   "web测试": (context) {
     return WebViewExample();
   },
-  "页面埋点事件": (context) {
-    return BuriedPointEvents();
+  "数据库操作": (context) {
+    return PackagingSpflite();
+  },
+  "封装数据库工具类": (context) {
+    return SpflitePage();
+  },
+  "Tab切换": (context) {
+    return TabDemo();
+  },
+  "卡片滚动": (context) {
+    return Switchover();
+  },
+  "电影页面选择案例": (context) {
+    return RollPage();
+  },
+  "滚动到列表指定item位置": (context) {
+    return RollTest();
   }
 };
