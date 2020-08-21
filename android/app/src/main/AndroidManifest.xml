@@ -7,7 +7,7 @@
          FlutterApplication and put your custom class here. -->
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="videotest"
+        android:label="Flutter 案例测试"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

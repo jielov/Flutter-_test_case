@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:videotest/view/base_app_bar.dart';
 
 class Switchover extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: DisplayPage(),
+    return Scaffold(
+      appBar: BaseAppBar(
+        titleStr: '图片滑动',
+        automaticallyImplyLeading: true,
+      ).commAppBar(context),
+      body: DisplayPage(),
     );
   }
 }

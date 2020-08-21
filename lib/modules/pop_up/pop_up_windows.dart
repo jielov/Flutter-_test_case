@@ -1,20 +1,18 @@
 import 'package:flutter/animation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-
-
+import 'package:videotest/view/base_app_bar.dart';
 
 class PopUpWindows extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'flutter之Hero动画',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+    return Scaffold(
+      appBar: BaseAppBar(
+        titleStr: 'flutter之Hero动画',
+        automaticallyImplyLeading: true,
+      ).commAppBar(context),
+      body: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -32,18 +30,18 @@ class _MyHomePageState extends State<MyHomePage> {
   void showPhoto(BuildContext context, Widget image) {
     Navigator.push(context,
         MaterialPageRoute<void>(builder: (BuildContext context) {
-          return GestureDetector(
-            child: SizedBox.expand(
-              child: Hero(
-                tag: image,
-                child: image,
-              ),
-            ),
-            onTap: () {
-              Navigator.maybePop(context);
-            },
-          );
-        }));
+      return GestureDetector(
+        child: SizedBox.expand(
+          child: Hero(
+            tag: image,
+            child: image,
+          ),
+        ),
+        onTap: () {
+          Navigator.maybePop(context);
+        },
+      );
+    }));
   }
 
   List<Widget> _list = <Widget>[
@@ -141,7 +139,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         crossAxisSpacing: 4.0,
                         padding: const EdgeInsets.all(4.0),
                         children: _list.map(
-                              (Widget img) {
+                          (Widget img) {
                             return GestureDetector(
                               onTap: () {
                                 showPhoto(context, img);

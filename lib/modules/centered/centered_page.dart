@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 // 一个颜色的三方插件
 //import 'package:flutter_color_plugin/flutter_color_plugin.dart';
 import 'package:videotest/res/app_color.dart';
+import 'package:videotest/view/base_app_bar.dart';
 
 class HousePerson extends StatefulWidget {
   final int selectIndex; // 外部传入默认选择第几个
@@ -67,39 +68,45 @@ class _HousePersonState extends State<HousePerson> {
       widget.clearData = false;
     }
 
-    return Container(
-      color: Colors.white,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Row(
-            children: <Widget>[
-              SizedBox(
-                width: 20,
-              ),
-              Text(
-                '最多宜居',
-                style: TextStyle(
-                  fontSize: 15,
-                  color: AppColor.color_888888,
-                  fontFamily: 'PingFangSC-Semibold',
-                  fontWeight: FontWeight.bold,
+    return Scaffold(
+      appBar: BaseAppBar(
+        titleStr: '循环滚动',
+        automaticallyImplyLeading: true,
+      ).commAppBar(context),
+      body: Container(
+        color: Colors.white,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                SizedBox(
+                  width: 20,
                 ),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 15,
-          ),
-          _line(screenWidth - 40),
-          Container(
-            width: screenWidth - 40,
-            color: Colors.white,
-            height: 50,
-            child: _listView(screenWidth - 40),
-          ),
-          _line(screenWidth - 40),
-        ],
+                Text(
+                  '最多宜居',
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: AppColor.color_888888,
+                    fontFamily: 'PingFangSC-Semibold',
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            _line(screenWidth - 40),
+            Container(
+              width: screenWidth - 40,
+              color: Colors.white,
+              height: 50,
+              child: _listView(screenWidth - 40),
+            ),
+            _line(screenWidth - 40),
+          ],
+        ),
       ),
     );
   }

@@ -4,7 +4,6 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:path_provider_ex/path_provider_ex.dart';
 
-
 class AcquirePage extends StatefulWidget {
   @override
   _AcquirePageState createState() => _AcquirePageState();
@@ -39,28 +38,26 @@ class _AcquirePageState extends State<AcquirePage> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Plugin example app'),
-        ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text(
-                '内部存储根:\n ${(_storageInfo.length > 0) ? _storageInfo[0].rootDir : "unavailable"}\n'),
-            Text(
-                '内部存储appFilesDir:\n ${(_storageInfo.length > 0) ? _storageInfo[0].appFilesDir : "unavailable"}\n'),
-            Text(
-                '内部存储AvailableGB:\n ${(_storageInfo.length > 0) ? _storageInfo[0].availableGB : "unavailable"}\n'),
-            Text(
-                'SD Card root: ${(_storageInfo.length > 1) ? _storageInfo[1].rootDir : "unavailable"}\n'),
-            Text(
-                'SD Card appFilesDir: ${(_storageInfo.length > 1) ? _storageInfo[1].appFilesDir : "unavailable"}\n'),
-            Text(
-                'SD Card AvailableGB:\n ${(_storageInfo.length > 1) ? _storageInfo[1].availableGB : "unavailable"}\n'),
-          ],
-        ) ,
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Plugin example app'),
+      ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+              '内部存储根:\n ${(_storageInfo.length > 0) ? _storageInfo[0].rootDir : "unavailable"}\n'),
+          Text(
+              '内部存储appFilesDir:\n ${(_storageInfo.length > 0) ? _storageInfo[0].appFilesDir : "unavailable"}\n'),
+          Text(
+              '内部存储AvailableGB:\n ${(_storageInfo.length > 0) ? _storageInfo[0].availableGB : "unavailable"}\n'),
+          Text(
+              'SD Card root: ${(_storageInfo.length > 1) ? _storageInfo[1].rootDir : "unavailable"}\n'),
+          Text(
+              'SD Card appFilesDir: ${(_storageInfo.length > 1) ? _storageInfo[1].appFilesDir : "unavailable"}\n'),
+          Text(
+              'SD Card AvailableGB:\n ${(_storageInfo.length > 1) ? _storageInfo[1].availableGB : "unavailable"}\n'),
+        ],
       ),
     );
   }

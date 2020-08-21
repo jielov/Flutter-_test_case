@@ -38,9 +38,7 @@ class ChooseDownloadState extends State<ChooseDownload> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
+    return Scaffold(
         appBar: AppBar(
           title: Text("DropDown Button Example"),
         ),
@@ -59,7 +57,6 @@ class ChooseDownloadState extends State<ChooseDownload> {
                 ],
               )),
         ),
-      ),
-    );
+      );
   }
 }

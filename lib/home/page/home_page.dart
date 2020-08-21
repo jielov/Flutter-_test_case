@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:videotest/modules/Marquee/marquee_page.dart';
 import 'package:videotest/modules/acquire/acquire_page.dart';
 import 'package:videotest/modules/centered/centered_page.dart';
 import 'package:videotest/modules/ceshi/flutter_keyboard_visibility.dart';
 import 'package:videotest/modules/ceshi/tab.dart';
 import 'package:videotest/modules/data_store/data_store_page.dart';
+import 'package:videotest/modules/discover_dome/discover_page.dart';
 import 'package:videotest/modules/download/page/download_page.dart';
 import 'package:videotest/modules/html_flutter_inappwebview/inapp_web_view.dart';
 import 'package:videotest/modules/input_box/input_box.dart';
 import 'package:videotest/modules/keyboard/page/keyboard_avoider_page.dart';
 import 'package:videotest/modules/keyboard/page/keyboard_page.dart';
 import 'package:videotest/modules/keyboard/page/keyborad_ceshi_page.dart';
+import 'package:videotest/modules/keyboard/test/keyboard_demo_page.dart';
+import 'package:videotest/modules/keyboard/test/test_page.dart';
+import 'package:videotest/modules/list/list_sliding_delete.dart';
 import 'package:videotest/modules/list/list_sliding_to_monitor.dart';
 import 'package:videotest/modules/photo/photo_page.dart';
 import 'package:videotest/modules/pop_up/pop_up_windows.dart';
@@ -17,12 +22,14 @@ import 'package:videotest/modules/pull_down/pull_down_page.dart';
 import 'package:videotest/modules/roll/filtrate_page.dart';
 import 'package:videotest/modules/roll/roll_page.dart';
 import 'package:videotest/modules/roll/roll_test.dart';
+import 'package:videotest/modules/seek_slider/Seek_Slider_page.dart';
 import 'package:videotest/modules/sqflite/packaging_spflite.dart';
 import 'package:videotest/modules/sqflite/spflite_page.dart';
 import 'package:videotest/modules/text/page/cross_dissolve_page.dart';
 import 'package:videotest/modules/webview/page/ceshi_web.dart';
 import 'package:videotest/modules/webview/page/html_page.dart';
 import 'package:videotest/modules/webview/page/webview_html.dart';
+import 'package:videotest/root/base_tab/base_tab_page.dart';
 import 'package:videotest/utils/adapter.dart';
 
 class HomePage extends StatefulWidget {
@@ -145,5 +152,23 @@ Map<String, WidgetBuilder> routers = {
   },
   "滚动到列表指定item位置": (context) {
     return RollTest();
-  }
+  },
+  "列表左右滑动删除": (context) {
+    return ListSlidingDelete();
+  },
+  "跑马灯": (context) {
+    return MarqueePage();
+  },
+  "弹出框键盘遮挡 获取键盘高度": (context) {
+    return TestPageKeyboard();
+  },
+  "KeyBoardDemoPage": (context) {
+    return InputBottomDemoPage();
+  },
+  "发现之左侧选择列表": (context) {
+    return DiscoverPage();
+  },
+  "拖拽进度条": (context) {
+    return SeekSliderPage();
+  },
 };
