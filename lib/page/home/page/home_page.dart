@@ -1,35 +1,35 @@
 import 'package:flutter/material.dart';
-import 'package:videotest/modules/Marquee/marquee_page.dart';
-import 'package:videotest/modules/acquire/acquire_page.dart';
-import 'package:videotest/modules/centered/centered_page.dart';
-import 'package:videotest/modules/ceshi/flutter_keyboard_visibility.dart';
-import 'package:videotest/modules/ceshi/tab.dart';
-import 'package:videotest/modules/data_store/data_store_page.dart';
-import 'package:videotest/modules/discover_dome/discover_page.dart';
-import 'package:videotest/modules/download/page/download_page.dart';
-import 'package:videotest/modules/html_flutter_inappwebview/inapp_web_view.dart';
-import 'package:videotest/modules/input_box/input_box.dart';
-import 'package:videotest/modules/keyboard/page/keyboard_avoider_page.dart';
-import 'package:videotest/modules/keyboard/page/keyboard_page.dart';
-import 'package:videotest/modules/keyboard/page/keyborad_ceshi_page.dart';
-import 'package:videotest/modules/keyboard/test/keyboard_demo_page.dart';
-import 'package:videotest/modules/keyboard/test/test_page.dart';
-import 'package:videotest/modules/list/list_sliding_delete.dart';
-import 'package:videotest/modules/list/list_sliding_to_monitor.dart';
-import 'package:videotest/modules/photo/photo_page.dart';
-import 'package:videotest/modules/pop_up/pop_up_windows.dart';
-import 'package:videotest/modules/pull_down/pull_down_page.dart';
-import 'package:videotest/modules/roll/filtrate_page.dart';
-import 'package:videotest/modules/roll/roll_page.dart';
-import 'package:videotest/modules/roll/roll_test.dart';
-import 'package:videotest/modules/seek_slider/Seek_Slider_page.dart';
-import 'package:videotest/modules/sqflite/packaging_spflite.dart';
-import 'package:videotest/modules/sqflite/spflite_page.dart';
-import 'package:videotest/modules/text/page/cross_dissolve_page.dart';
-import 'package:videotest/modules/webview/page/ceshi_web.dart';
-import 'package:videotest/modules/webview/page/html_page.dart';
-import 'package:videotest/modules/webview/page/webview_html.dart';
-import 'package:videotest/root/base_tab/base_tab_page.dart';
+import 'file:///E:/AndroidStudio/XMU/video_test/lib/page/modules/Marquee/marquee_page.dart';
+import 'file:///E:/AndroidStudio/XMU/video_test/lib/page/modules/acquire/acquire_page.dart';
+import 'file:///E:/AndroidStudio/XMU/video_test/lib/page/modules/centered/centered_page.dart';
+import 'file:///E:/AndroidStudio/XMU/video_test/lib/page/modules/ceshi/flutter_keyboard_visibility.dart';
+import 'file:///E:/AndroidStudio/XMU/video_test/lib/page/modules/ceshi/tab.dart';
+import 'file:///E:/AndroidStudio/XMU/video_test/lib/page/modules/data_store/data_store_page.dart';
+import 'file:///E:/AndroidStudio/XMU/video_test/lib/page/modules/data_store/equipment_page.dart';
+import 'file:///E:/AndroidStudio/XMU/video_test/lib/page/modules/discover_dome/discover_page.dart';
+import 'file:///E:/AndroidStudio/XMU/video_test/lib/page/modules/download/page/download_page.dart';
+import 'file:///E:/AndroidStudio/XMU/video_test/lib/page/modules/html_flutter_inappwebview/inapp_web_view.dart';
+import 'package:videotest/page/modules/input_box/input_box.dart';
+import 'package:videotest/page/modules/webview/page/webview_html.dart';
+import 'file:///E:/AndroidStudio/XMU/video_test/lib/page/modules/keyboard/page/keyboard_avoider_page.dart';
+import 'file:///E:/AndroidStudio/XMU/video_test/lib/page/modules/keyboard/page/keyboard_page.dart';
+import 'file:///E:/AndroidStudio/XMU/video_test/lib/page/modules/keyboard/page/keyborad_ceshi_page.dart';
+import 'file:///E:/AndroidStudio/XMU/video_test/lib/page/modules/keyboard/test/keyboard_demo_page.dart';
+import 'file:///E:/AndroidStudio/XMU/video_test/lib/page/modules/keyboard/test/test_page.dart';
+import 'file:///E:/AndroidStudio/XMU/video_test/lib/page/modules/list/list_sliding_delete.dart';
+import 'file:///E:/AndroidStudio/XMU/video_test/lib/page/modules/list/list_sliding_to_monitor.dart';
+import 'file:///E:/AndroidStudio/XMU/video_test/lib/page/modules/photo/photo_page.dart';
+import 'file:///E:/AndroidStudio/XMU/video_test/lib/page/modules/pop_up/pop_up_windows.dart';
+import 'file:///E:/AndroidStudio/XMU/video_test/lib/page/modules/pull_down/pull_down_page.dart';
+import 'file:///E:/AndroidStudio/XMU/video_test/lib/page/modules/roll/filtrate_page.dart';
+import 'file:///E:/AndroidStudio/XMU/video_test/lib/page/modules/roll/roll_page.dart';
+import 'file:///E:/AndroidStudio/XMU/video_test/lib/page/modules/roll/roll_test.dart';
+import 'file:///E:/AndroidStudio/XMU/video_test/lib/page/modules/seek_slider/Seek_Slider_page.dart';
+import 'file:///E:/AndroidStudio/XMU/video_test/lib/page/modules/sqflite/packaging_spflite.dart';
+import 'file:///E:/AndroidStudio/XMU/video_test/lib/page/modules/sqflite/spflite_page.dart';
+import 'file:///E:/AndroidStudio/XMU/video_test/lib/page/modules/text/page/cross_dissolve_page.dart';
+import 'file:///E:/AndroidStudio/XMU/video_test/lib/page/modules/webview/page/ceshi_web.dart';
+import 'file:///E:/AndroidStudio/XMU/video_test/lib/page/modules/webview/page/html_page.dart';
 import 'package:videotest/utils/adapter.dart';
 
 class HomePage extends StatefulWidget {
@@ -44,8 +44,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    //    ///初始化ScreenUtil
-    ScreenAdapter.setDesignWHs(context, 375, 667, allowFontScaling: true);
     var routeLists = routers.keys.toList();
     return Scaffold(
         appBar: AppBar(
@@ -126,7 +124,7 @@ Map<String, WidgetBuilder> routers = {
   "下拉菜单": (context) {
     return ChooseDownload();
   },
-  "获取设备信息": (context) {
+  "获取存储信息": (context) {
     return AcquirePage();
   },
   "数据存储之shared_preferences": (context) {
@@ -171,4 +169,7 @@ Map<String, WidgetBuilder> routers = {
   "拖拽进度条": (context) {
     return SeekSliderPage();
   },
+  "获取设备信息": (context) {
+    return EquipmentPage();
+  }
 };

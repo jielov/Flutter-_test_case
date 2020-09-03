@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:videotest/modules/discover_dome/right_lIst_view.dart';
+import 'file:///E:/AndroidStudio/XMU/video_test/lib/page/modules/discover_dome/right_lIst_view.dart';
 import 'package:videotest/utils/adapter.dart';
 import 'package:videotest/view/base_app_bar.dart';
 

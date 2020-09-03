@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:videotest/modules/keyboard/view/keyboard_view.dart';
+import 'file:///E:/AndroidStudio/XMU/video_test/lib/page/modules/keyboard/view/keyboard_view.dart';
 
 class KeyboardPage extends StatefulWidget {
   @override

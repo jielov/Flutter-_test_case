@@ -281,7 +281,7 @@ class _MyHomePageState extends State<MyHomePage> {
     }
     return null;
   }
-
+  //图片选择参数
   Future<void> _displayPickImageDialog(
       BuildContext context, OnPickImageCallback onPick) async {
     return showDialog(

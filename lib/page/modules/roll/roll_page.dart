@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:videotest/modules/roll/filtrate_condition_view.dart';
+import 'file:///E:/AndroidStudio/XMU/video_test/lib/page/modules/roll/filtrate_condition_view.dart';
 import 'package:videotest/utils/adapter.dart';
 
 class RollPage extends StatefulWidget {

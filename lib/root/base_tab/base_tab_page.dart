@@ -1,204 +1,135 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:async';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:videotest/root/base_tab/arc_painter.dart';
-import 'package:videotest/view/base_app_bar.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:videotest/page/home/page/home_page.dart';
+import 'package:videotest/page/mine/page/mine_page.dart';
+import 'package:videotest/res/app_color.dart';
+import 'package:videotest/res/styles.dart';
+import 'package:videotest/utils/adapter.dart';
+import 'package:videotest/utils/toast_util.dart';
 
 class BaseTabPage extends StatefulWidget {
   @override
   _BaseTabPageState createState() => _BaseTabPageState();
 }
 
-class _BaseTabPageState extends State<BaseTabPage>
-    with SingleTickerProviderStateMixin {
-  int _activeIndex = 0; //激活项
-  double _height = 48; //导航栏高度
-  double _floatRadius; //悬浮图标半径
-  double _moveTween = 0; //移动补间
-  double _padding = 10; //浮动图标与圆弧之间的间隙
-  AnimationController _animationController; //动画控制器
-  Animation<double> _moveAnimation; //移动动画
-  //导航项
-  List _naVs = [
-    Icons.search,
-    Icons.ondemand_video,
-    Icons.music_video,
-    Icons.insert_comment,
-    Icons.person
-  ];
+class _BaseTabPageState extends State<BaseTabPage> {
+  int _tabIndex = 0;
+  int _lastClickTime = 0;
+  List<Widget> tabPages;
+  List<BottomNavigationBarItem> bottomBarItems;
+  PageController _pageController = PageController();
 
   @override
   void initState() {
     // TODO: implement initState
-    _floatRadius = _height * 2 / 3;
-    _animationController = AnimationController(
-        vsync: this, duration: Duration(milliseconds: 400)); // 动画时长
     super.initState();
+    tabPages = [
+      HomePage(title: 'flutter 案例演示'),
+      MinePage(),
+    ];
+  }
+
+  getBottomBarIcon(int index) {
+    if (index == 0) {
+      return (index == _tabIndex
+          ? Icon(Icons.home, color: AppColor.color_4C64FC)
+          : Icon(Icons.home, color: Colors.black12));
+    } else if (index == 1) {
+      return (index == _tabIndex
+          ? Icon(Icons.assignment_ind, color: AppColor.color_4C64FC)
+          : Icon(Icons.assignment_ind, color: Colors.black12));
+    }
+    return null;
+  }
+
+//图片大小
+  _getAssetIcon(String path) {
+    return Container(
+        padding: EdgeInsets.only(bottom: ScreenAdapter.getHeight(3)),
+        child: Image.asset(path,
+            width: ScreenAdapter.getWidth(18),
+            height: ScreenAdapter.getHeight(18)));
+  }
+
+  Text _getBottomBarTitle(int index) {
+    if (index == 0) {
+      return Text("首页");
+    } else if (index == 1) {
+      return Text("我的");
+    }
+    return null;
   }
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double singleWidth = width / _naVs.length;
-    return Container(
-      child: Stack(
-        children: <Widget>[
-          Scaffold(
-            appBar: BaseAppBar(
-              titleStr: "底部浮动导航栏",
-              elevation: 0,
-              automaticallyImplyLeading: true,
-            ).commAppBar(context),
-            backgroundColor: Colors.white70,
+    //    ///初始化ScreenUtil
+    ScreenAdapter.setDesignWHs(context, 375, 667, allowFontScaling: true);
+
+    bottomBarItems = [
+      BottomNavigationBarItem(
+          icon: getBottomBarIcon(0), title: _getBottomBarTitle(0)),
+      BottomNavigationBarItem(
+          icon: getBottomBarIcon(1), title: _getBottomBarTitle(1)),
+    ];
+
+    return WillPopScope(
+      onWillPop: _doubleExit,
+      child: Scaffold(
+        body: PageView.builder(
+          itemBuilder: (context, index) => tabPages[index],
+          itemCount: tabPages.length,
+          controller: _pageController,
+          physics: NeverScrollableScrollPhysics(),
+          onPageChanged: (index) {
+            setState(() {
+              _tabIndex = index;
+            });
+          },
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Colors.white,
+          selectedItemColor: AppColor.color_4C64FC,
+          unselectedItemColor: AppColor.color_999999,
+          unselectedLabelStyle: TextStyles.commTextStyle().copyWith(
+            color: AppColor.color_999999,
+            fontSize: ScreenAdapter.getFontSize(12),
           ),
-          Positioned(
-            bottom: 0,
-            child: Container(
-              width: width,
-              child: Stack(
-                overflow: Overflow.visible,
-                children: <Widget>[
-                  //悬浮图标
-                  Positioned(
-                    top: _animationController.value <= 0.5
-                        ? (_animationController.value *
-                                _height *
-                                _padding /
-                                2) -
-                            _floatRadius / 3 * 2
-                        : (1 - _animationController.value) *
-                                _height *
-                                _padding /
-                                2 -
-                            _floatRadius / 3 * 2,
-                    left: _moveTween * singleWidth +
-                        (singleWidth - _floatRadius) / 2 -
-                        _padding / 2,
-                    child: DecoratedBox(
-                      decoration:
-                          ShapeDecoration(shape: CircleBorder(), shadows: [
-                        BoxShadow(
-                          //阴影效果
-                          blurRadius: _padding / 2,
-                          offset: Offset(0, _padding / 2),
-                          spreadRadius: 0,
-                          color: Colors.black26,
-                        )
-                      ]),
-                      child: CircleAvatar(
-                        radius: _floatRadius - _padding, //浮动图标和圆弧之间设置10pixel间隙
-                        backgroundColor: Colors.white,
-                        child: Icon(
-                          _naVs[_activeIndex],
-                          color: Colors.black,
-                        ),
-                      ),
-                    ),
-                  ),
-                  //所有图标
-                  CustomPaint(
-                    child: SizedBox(
-                      height: _height,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: _naVs
-                            .asMap()
-                            .map(
-                              (i, v) => MapEntry(
-                                i,
-                                GestureDetector(
-                                  child: Icon(
-                                    v,
-                                    color: _activeIndex == i
-                                        ? Colors.transparent
-                                        : Colors.grey,
-                                  ),
-                                  onTap: () {
-                                    _switchNav(i);
-                                  },
-                                ),
-                              ),
-                            )
-                            .values
-                            .toList(),
-                      ),
-                    ),
-                    painter: ArcPainter(
-                      _naVs.length,
-                      _moveTween,
-                      _padding,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          )
-        ],
+          selectedLabelStyle: TextStyles.commTextStyle().copyWith(
+              color: AppColor.color_55D180,
+              fontSize: ScreenAdapter.getFontSize(12)),
+          type: BottomNavigationBarType.fixed,
+          iconSize: ScreenAdapter.getFontSize(24),
+          items: bottomBarItems,
+          currentIndex: _tabIndex,
+          onTap: (index) {
+            _pageController.jumpToPage(index);
+          },
+        ),
       ),
     );
   }
 
-  //切换导航
-//  _switchNav(int newIndex) {
-//    double oldPosition = _activeIndex.toDouble();
-//    double newPosition = newIndex.toDouble();
-//    if (oldPosition != newIndex &&
-//        _animationController.status != AnimationStatus.forward) {
-//      _animationController.reset();
-//      _moveAnimation = Tween(begin: oldPosition, end: newPosition).animate(
-//          CurvedAnimation(
-//              parent: _animationController, curve: Curves.easeInCubic)
-//            ..addListener(() {
-//              setState(() {
-//                _moveTween = _moveAnimation.value;
-//              });
-//            })
-//            ..addStatusListener((AnimationStatus status) {
-//              if (status == AnimationStatus.completed) {
-//                setState(() {
-//                  _activeIndex = newIndex;
-//                });
-//              }
-//            }));
-//      _animationController.forward();
-//    }
-//  }
-
-//切换导航
-  _switchNav(int newIndex) {
-    double oldPosition = _activeIndex.toDouble();
-
-    double newPosition = newIndex.toDouble();
-
-    if (oldPosition != newPosition &&
-        _animationController.status != AnimationStatus.forward) {
-      _animationController.reset();
-
-      _moveAnimation = Tween(begin: oldPosition, end: newPosition).animate(
-          CurvedAnimation(
-              parent: _animationController, curve: Curves.easeInCubic))
-        ..addListener(() {
-          setState(() {
-            _moveTween = _moveAnimation.value;
-          });
-        })
-        ..addStatusListener((AnimationStatus status) {
-          if (status == AnimationStatus.completed) {
-            setState(() {
-              _activeIndex = newIndex;
-            });
-          }
-        });
-
-      _animationController.forward();
+  // 双击返回键退出应用
+  Future<bool> _doubleExit() {
+    int nowTime = DateTime.now().microsecondsSinceEpoch;
+    if (_lastClickTime != 0 && nowTime - _lastClickTime > 1500) {
+      return Future.value(true);
+    } else {
+      _lastClickTime = DateTime.now().microsecondsSinceEpoch;
+      Future.delayed(const Duration(milliseconds: 1500), () {
+        _lastClickTime = 0;
+      });
+      ToastUtil.showToastForShort("再按一次退出应用", gravity: ToastGravity.BOTTOM);
+      return Future.value(false);
     }
   }
 
   @override
   void dispose() {
     // TODO: implement dispose
-    _animationController.dispose();
+    _pageController.dispose();
     super.dispose();
   }
 }

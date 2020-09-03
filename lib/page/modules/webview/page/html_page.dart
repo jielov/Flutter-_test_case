@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:videotest/modules/html_flutter_inappwebview/inapp_web_view.dart';
-import 'package:videotest/modules/webview/view/web_view_page.dart';
+import 'file:///E:/AndroidStudio/XMU/video_test/lib/page/modules/html_flutter_inappwebview/inapp_web_view.dart';
+import 'file:///E:/AndroidStudio/XMU/video_test/lib/page/modules/webview/view/web_view_page.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class HtmlPage extends StatefulWidget {

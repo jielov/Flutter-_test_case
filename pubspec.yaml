@@ -59,7 +59,7 @@ dependencies:
   #https://pub.flutter-io.cn/packages/toast
   toast: ^0.1.4  #吐司
   #https://pub.flutter-io.cn/packages/path_provider_ex/install
-  path_provider_ex: ^1.0.1  #获取设备信息
+  path_provider_ex: ^1.0.1  #获取设备存储信息
   #https://pub.flutter-io.cn/packages/shared_preferences
   shared_preferences: ^0.4.2 #数据存储
   #https://pub.flutter-io.cn/packages/flutter_page_tracker/install
@@ -72,7 +72,8 @@ dependencies:
   flutter_swiper: ^1.1.6  #轮播
   #https://pub.flutter-io.cn/packages/flutter_color_plugin/install
   flutter_color_plugin: ^0.0.2  #颜色解析
-
+  #https://pub.flutter-io.cn/packages/device_info/install
+  device_info: ^0.4.2+7 #获取当前设备信息
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -94,8 +95,8 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
     - assets/images/
-    #    - assets/images/icon_bar_back.png
-    #    - assets/images/icon_bar_black_back.png
+    - assets/images/icon_bar_back.png
+    - assets/images/icon_bar_black_back.png
     - assets/images/gsy_cat.png
     - assets/images/test.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
